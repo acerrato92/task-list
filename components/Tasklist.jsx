@@ -1,38 +1,33 @@
-import React from "react";
-import Task from "./Task";
+import  { useState } from "react";
 
-const TaskList = () => {
-    
-  const tasks = [
-    {
-        id: 1,
-      name: "Comprar leche",
-      done: false,
-    },
-    {
-        id: 2,
-      name: "Lavar los platos",
-      done: true,
-    },
-    {
-        id: 3,
-      name: "Sacar la basura",
-      done: false,
-    },
-  ];
+export default function useTaskList() {
+  const [tasks, setTasks] = useState([]);
 
-  return (
-    <div>
-         
-    <ul>
-      {tasks.map((task) => (
-        <Task key={task.id} task={task} />
-      ))}
-    
-    </ul>
-    </div>
-   
-  );
-};
+  // Función para crear una tarea
+  const createTask = (task) => {
+    setTasks([...tasks, task]);
+  };
 
-export default TaskList;
+  // Función para borrar una tarea
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
+
+  // Función para actualizar una tarea
+  const updateTask = (id, task) => {
+    setTasks(tasks.map(task => {
+      if (task.id === id) {
+        return task;
+      } else {
+        return task;
+      }
+    }));
+  };
+
+  return {
+    tasks,
+    createTask,
+    deleteTask,
+    updateTask,
+  };
+}

@@ -1,16 +1,16 @@
-function Task({ task, toggleTaskCompletion }) {
-    return (
-      <div className="task">
-        <input
-          type="checkbox"
-          checked={task.completed}
-          onChange={() => toggleTaskCompletion(task.id)}
-        />
-        <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-          {task.name}
-        </span>
-      </div>
-    );
-  }
-  
-  export default Task;
+import React, { useState, useEffect } from "react";
+import { useTaskList } from "./useTaskList";
+
+const Task = ({ id, title }) => {
+  const { tasks, createTask, deleteTask, updateTask } = useTaskList();
+
+  return (
+    <div>
+      <h2>{title}</h2>
+      <button onClick={() => deleteTask(id)}>Borrar</button>
+      <button onClick={() => updateTask(id, { title: "Nueva tarea" })}>
+        Actualizar
+      </button>
+    </div>
+  );
+};

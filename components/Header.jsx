@@ -1,14 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useTaskList } from "./useTaskList";
 
-function Header() {
-   
+const Header = () => {
+  const { tasks } = useTaskList();
+
   return (
-    <nav>
-      <h1>
-      <a>TO DO</a>
-      </h1> 
-    </nav>
+    <div>
+      <h1>Lista de tareas</h1>
+      <ul>
+        {tasks.map(task => (
+          <li key={task.id}>{task.title}</li>
+        ))}
+      </ul>
+    </div>
   );
-}
-
-export default Header;
+};
