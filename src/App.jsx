@@ -1,8 +1,17 @@
 //import React from 'react';
 import React, { useState, useEffect } from 'react';
-
-
+import React from "react";
+import TaskList from "./TaskList";
+import TaskForm from "./TaskForm";
+import useTaskManager from "./useTaskManager";
 import './styles.css';
+
+
+
+  
+   
+
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -74,6 +83,10 @@ function App() {
           }}
         />
       </div>
+      <div>
+      <TaskForm onAdd={addTask} />
+    </div>
+  
     </div>
   );
 
