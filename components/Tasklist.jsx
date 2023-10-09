@@ -1,33 +1,14 @@
-import  { useState } from "react";
+import React, { useState } from "react";
+import { useTaskList } from "./useTaskList";
 
-export default function useTaskList() {
-  const [tasks, setTasks] = useState([]);
+const TaskList = () => {
+  const { tasks } = useTaskList();
 
-  // Función para crear una tarea
-  const createTask = (task) => {
-    setTasks([...tasks, task]);
-  };
-
-  // Función para borrar una tarea
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
-
-  // Función para actualizar una tarea
-  const updateTask = (id, task) => {
-    setTasks(tasks.map(task => {
-      if (task.id === id) {
-        return task;
-      } else {
-        return task;
-      }
-    }));
-  };
-
-  return {
-    tasks,
-    createTask,
-    deleteTask,
-    updateTask,
-  };
-}
+  return (
+    <div>
+      <Header tasks={tasks} />
+      <Task id={1} title="Tarea 1" />
+      <Task id={2} title="Tarea 2" />
+    </div>
+  );
+};

@@ -14,3 +14,5 @@ const Task = ({ id, title }) => {
     </div>
   );
 };
+
+export default Task;

@@ -1,3 +1,23 @@
-* {
-    box-sizing: border-box;
-  }
+
+body {
+  font-family: sans-serif;
+}
+
+.title {
+  color: blue;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
