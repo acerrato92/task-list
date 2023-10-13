@@ -5,12 +5,41 @@ import TaskList from "./TaskList";
 import TaskForm from "./TaskForm";
 import useTaskManager from "./useTaskManager";
 import './styles.css';
+import React, { useState } from 'react';
 
+function App() {
+  const [task, setTask] = useState('');
+  const [tasks, setTasks] = useState([]);
 
+  const handleTaskChange = (event) => {
+    setTask(event.target.value);
+  };
 
-  
-   
+  const handleAddTask = () => {
+    if (task.trim() !== '') {
+      setTasks([...tasks, task]);
+      setTask('');
+    }
+  };
 
+  return (
+    <div className="App">
+      <h1>Lista de Tareas</h1>
+      <input
+        type="text"
+        value={task}
+        onChange={handleTaskChange}
+        placeholder="Nueva tarea"
+      />
+      <button onClick={handleAddTask}>Agregar tarea</button>
+      <ul>
+        {tasks.map((t, index) => (
+          <li key={index}>{t}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 
 function App() {
